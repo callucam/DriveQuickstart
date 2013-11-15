@@ -1,8 +1,8 @@
 package com.example.drivequickstart;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -98,12 +98,10 @@ public class MainActivity extends Activity {
 	}
 
   private void startCameraIntent() {
-    String mediaStorageDir = Environment.getExternalStoragePublicDirectory(
-        Environment.DIRECTORY_PICTURES).getPath();
+    String mediaStorageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath();
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
-    fileUri = Uri.fromFile(new java.io.File(mediaStorageDir + java.io.File.separator + "IMG_"
-        + timeStamp + "himom" + ".jpg"));
-
+    fileUri = Uri.fromFile(new java.io.File(mediaStorageDir + java.io.File.separator + "IMG_" + timeStamp + "himom" + ".jpg"));
+    showToast(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath());
     Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
     cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
     startActivityForResult(cameraIntent, CAPTURE_IMAGE);
